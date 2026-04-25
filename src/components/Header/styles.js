@@ -25,6 +25,10 @@ export const Content = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @media (max-width: 768px) {
+    padding: 0 18px;
+  }
 `;
 
 export const Navigation = styled.nav`
@@ -137,6 +141,8 @@ export const Logout = styled.button`
 `;
 
 export const LinkContainer = styled.div`
+  position: relative; /* essencial pro badge */
+
   display: flex;
   align-items: center;
   gap: 8px;
@@ -145,19 +151,53 @@ export const LinkContainer = styled.div`
   font-size: 15px;
   font-weight: 600;
 
+  cursor: pointer;
+
   transition: all 0.3s ease;
 
   &:hover {
     color: #22c55e;
-  }
-
-  a {
-    color: inherit;
-    text-decoration: none;
-    transition: inherit;
+    transform: translateY(-1px);
   }
 
   svg {
     flex-shrink: 0;
+  }
+`;
+
+export const Badge = styled.span`
+  position: absolute;
+  top: -8px;
+  right: -12px;
+
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+
+  border-radius: 999px;
+
+  background: #22d3ee;
+  color: #0f172a;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 0 0 0 2px #020617;
+
+  animation: pop 0.25s ease;
+
+  @keyframes pop {
+    0% {
+      transform: scale(0.6);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
   }
 `;

@@ -7,6 +7,13 @@ export const Container = styled.div`
   background: linear-gradient(180deg, #f1f5f9 0%, #e2e8f0 100%);
 `;
 
+/* container geral */
+export const Wrapper = styled.div`
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 20px;
+`;
+
 export const Banner = styled.div`
   width: 100%;
   height: 180px;
@@ -24,15 +31,6 @@ export const Banner = styled.div`
 
   img {
     width: 120px;
-    filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.25));
-  }
-
-  @media (max-width: 768px) {
-    height: 150px;
-
-    img {
-      width: 95px;
-    }
   }
 `;
 
@@ -42,29 +40,12 @@ export const Title = styled.h2`
   color: #166534;
   text-align: center;
   margin: 32px 0 8px;
-  position: relative;
-
-  &::after {
-    content: '';
-    display: block;
-    width: 70px;
-    height: 4px;
-    border-radius: 999px;
-    background: #22c55e;
-    margin: 10px auto 0;
-  }
-
-  @media (max-width: 768px) {
-    font-size: 28px;
-    margin-top: 24px;
-  }
 `;
 
-export const Content = styled.div`
+/* grid principal */
+export const Grid = styled.div`
   width: 100%;
-  max-width: 1100px;
-  margin: 40px auto 0;
-  padding: 0 20px 40px;
+  margin-top: 40px;
 
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -72,7 +53,21 @@ export const Content = styled.div`
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
-    padding: 0 16px 32px;
-    margin-top: 28px;
+  }
+`;
+
+export const BackButton = styled.button`
+  margin: 20px 0 0 40px;
+  background: transparent;
+  border: none;
+
+  color: #64748b;
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  &:hover {
+    color: #22c55e;
   }
 `;

@@ -5,22 +5,23 @@ const CartContext = createContext({});
 export const CartProvider = ({ children }) => {
   const [cartProducts, setCartProducts] = useState([]);
 
+  const updateLocalStorage = (products) => {
+    localStorage.setItem('paulislanches:cartInfo', JSON.stringify(products));
+  };
+
   const putProductInCart = (product) => {
     const cartIndex = cartProducts.findIndex((prd) => prd.id === product.id);
     let newProductsInCart = [];
 
     if (cartIndex >= 0) {
-      // Cria uma cópia antes de alterar
       newProductsInCart = [...cartProducts];
       newProductsInCart[cartIndex].quantity =
         newProductsInCart[cartIndex].quantity + 1;
-      setCartProducts(newProductsInCart);
     } else {
-      product.quantity = 1;
-      newProductsInCart = [...cartProducts, product];
-      setCartProducts(newProductsInCart);
+      newProductsInCart = [...cartProducts, { ...product, quantity: 1 }];
     }
 
+    setCartProducts(newProductsInCart);
     updateLocalStorage(newProductsInCart);
   };
 
@@ -53,6 +54,7 @@ export const CartProvider = ({ children }) => {
           ? { ...prd, quantity: prd.quantity - 1 }
           : prd
       );
+
       setCartProducts(newCart);
       updateLocalStorage(newCart);
     } else {
@@ -60,12 +62,9 @@ export const CartProvider = ({ children }) => {
     }
   };
 
-  const updateLocalStorage = (products) => {
-    localStorage.setItem('paulislanches:cartInfo', JSON.stringify(products));
-  };
-
   useEffect(() => {
     const clientCartData = localStorage.getItem('paulislanches:cartInfo');
+
     if (clientCartData) {
       setCartProducts(JSON.parse(clientCartData));
     }
@@ -88,12 +87,5 @@ export const CartProvider = ({ children }) => {
 };
 
 export const useCart = () => {
-  const context = useContext(CartContext);
-
-  if (!context) {
-    throw new Error('useCart deve ser usado dentro de um CartProvider');
-  }
-
-  return context;
+  return useContext(CartContext);
 };
-

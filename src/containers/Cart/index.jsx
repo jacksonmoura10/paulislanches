@@ -1,21 +1,37 @@
+import { useNavigate } from 'react-router-dom';
 import Logo from '../../assets/logo.svg';
+import {
+  BackButton,
+  Banner,
+  Container,
+  Grid,
+  Title,
+  Wrapper,
+} from './styles';
 import CartItems from './components/CartItems';
 import CartResume from './components/CartResume';
-import { Banner, Container, Content, Title } from './styles';
 
 export function Cart() {
+  const navigate = useNavigate();
+
   return (
     <Container>
       <Banner>
         <img src={Logo} alt="logo paulislanches" />
       </Banner>
 
-      <Title>Checkout - Pedido</Title>
+      <BackButton type="button" onClick={() => navigate(-1)}>
+        ← Voltar
+      </BackButton>
 
-      <Content>
-        <CartItems />
-        <CartResume />
-      </Content>
+      <Wrapper>
+        <Title>Checkout - Pedido</Title>
+
+        <Grid>
+          <CartItems />
+          <CartResume />
+        </Grid>
+      </Wrapper>
     </Container>
   );
 }
