@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.section`
   width: 100%;
   overflow: hidden;
-  padding: 0 40px 20px;
+  padding: 0 40px 30px;
 
   .carousel-items {
     padding-right: 20px;
@@ -29,6 +29,27 @@ export const Container = styled.section`
     top: 50%;
     transform: translateY(-50%);
   }
+
+  @media (max-width: 768px) {
+    padding: 0 20px 24px;
+
+    .carousel-items {
+      padding-right: 14px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    padding: 0 16px 20px;
+
+    .carousel-items {
+      padding-right: 10px;
+    }
+
+    .react-multi-carousel-arrow {
+      min-width: 34px;
+      min-height: 34px;
+    }
+  }
 `;
 
 export const Title = styled.h2`
@@ -51,6 +72,22 @@ export const Title = styled.h2`
     border-radius: 999px;
     background: #22c55e;
   }
+
+  @media (max-width: 768px) {
+    font-size: 26px;
+    margin: 32px 0 24px;
+  }
+
+  @media (max-width: 600px) {
+    font-size: 22px;
+    margin: 28px 0 20px;
+    padding-bottom: 10px;
+
+    &::after {
+      width: 44px;
+      height: 3px;
+    }
+  }
 `;
 
 export const ContainerItems = styled.div`
@@ -60,9 +97,11 @@ export const ContainerItems = styled.div`
   border-radius: 18px;
   overflow: hidden;
   position: relative;
+
   display: flex;
   align-items: flex-end;
   justify-content: center;
+
   background: url(${({ $imageURL }) => $imageURL}) center/cover no-repeat;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
 
@@ -77,25 +116,56 @@ export const ContainerItems = styled.div`
       transparent
     );
   }
+
+  @media (max-width: 768px) {
+    max-width: 280px;
+    height: 155px;
+  }
+
+  @media (max-width: 600px) {
+    max-width: 100%;
+    height: 145px;
+    border-radius: 16px;
+  }
+
+  @media (max-width: 380px) {
+    height: 135px;
+  }
 `;
 
 export const CategoryButton = styled.button`
   position: relative;
   z-index: 1;
+
   margin-bottom: 14px;
   padding: 8px 16px;
+
   border: none;
   border-radius: 999px;
+
   background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(6px);
+
   color: #fff;
   font-size: 14px;
   font-weight: 600;
+
   cursor: pointer;
   transition: all 0.3s ease;
 
   &:hover {
     background: #22c55e;
     transform: translateY(-2px);
+  }
+
+  @media (max-width: 600px) {
+    font-size: 13px;
+    padding: 7px 14px;
+    margin-bottom: 12px;
+  }
+
+  @media (max-width: 380px) {
+    font-size: 12px;
+    padding: 6px 12px;
   }
 `;

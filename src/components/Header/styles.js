@@ -18,22 +18,30 @@ export const Container = styled.header`
 export const Content = styled.div`
   width: 100%;
   max-width: 1400px;
-  height: 70px;
+  min-height: 70px;
   margin: 0 auto;
   padding: 0 36px;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 16px;
 
   @media (max-width: 768px) {
-    padding: 0 18px;
+    min-height: 64px;
+    padding: 0 16px;
+    gap: 12px;
+  }
+
+  @media (max-width: 420px) {
+    padding: 0 12px;
   }
 `;
 
 export const Navigation = styled.nav`
   display: flex;
   align-items: center;
+  min-width: 0;
 
   div {
     display: flex;
@@ -47,6 +55,16 @@ export const Navigation = styled.nav`
     border: none;
     background: rgba(255, 255, 255, 0.12);
   }
+
+  @media (max-width: 520px) {
+    div {
+      gap: 12px;
+    }
+
+    hr {
+      height: 18px;
+    }
+  }
 `;
 
 export const HeaderLink = styled(NavLink)`
@@ -57,6 +75,7 @@ export const HeaderLink = styled(NavLink)`
   font-size: 15px;
   font-weight: 600;
   letter-spacing: 0.2px;
+  white-space: nowrap;
 
   transition: all 0.3s ease;
 
@@ -81,12 +100,33 @@ export const HeaderLink = styled(NavLink)`
         box-shadow: 0 0 12px rgba(34, 197, 94, 0.35);
       }
     `}
+
+  @media (max-width: 520px) {
+    font-size: 13px;
+
+    ${({ $isActive }) =>
+      $isActive &&
+      css`
+        &::after {
+          bottom: -8px;
+        }
+      `}
+  }
 `;
 
 export const Options = styled.div`
   display: flex;
   align-items: center;
   gap: 26px;
+  flex-shrink: 0;
+
+  @media (max-width: 768px) {
+    gap: 16px;
+  }
+
+  @media (max-width: 520px) {
+    gap: 12px;
+  }
 `;
 
 export const Profile = styled.div`
@@ -117,6 +157,12 @@ export const Profile = styled.div`
     color: #ffffff;
     font-weight: 700;
   }
+
+  @media (max-width: 650px) {
+    div {
+      display: none;
+    }
+  }
 `;
 
 export const Logout = styled.button`
@@ -141,7 +187,7 @@ export const Logout = styled.button`
 `;
 
 export const LinkContainer = styled.div`
-  position: relative; /* essencial pro badge */
+  position: relative;
 
   display: flex;
   align-items: center;
@@ -162,6 +208,18 @@ export const LinkContainer = styled.div`
 
   svg {
     flex-shrink: 0;
+  }
+
+  span {
+    white-space: nowrap;
+  }
+
+  @media (max-width: 520px) {
+    gap: 0;
+
+    span {
+      display: none;
+    }
   }
 `;
 
@@ -189,6 +247,11 @@ export const Badge = styled.span`
   box-shadow: 0 0 0 2px #020617;
 
   animation: pop 0.25s ease;
+
+  @media (max-width: 520px) {
+    top: -9px;
+    right: -9px;
+  }
 
   @keyframes pop {
     0% {

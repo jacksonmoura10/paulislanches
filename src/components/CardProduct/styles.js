@@ -1,15 +1,17 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  width: 220px;
+  width: 100%;
+  max-width: 280px;
+  min-height: 360px;
 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
 
-  padding: 20px;
-  border-radius: 16px;
+  padding: 22px;
+  border-radius: 18px;
 
   background: #ffffff;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
@@ -23,14 +25,14 @@ export const Container = styled.div`
 
   .info {
     width: 100%;
-    min-height: 60px;
+    min-height: 72px;
 
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 6px;
+    gap: 8px;
 
-    margin-top: 10px;
+    margin-top: 14px;
   }
 
   p {
@@ -38,10 +40,9 @@ export const Container = styled.div`
     color: #ff8c05;
     font-weight: 600;
     text-align: center;
-    line-height: 20px;
+    line-height: 22px;
     margin: 0;
 
-    /* limita o nome em 2 linhas */
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
@@ -49,22 +50,79 @@ export const Container = styled.div`
   }
 
   strong {
-    font-size: 18px;
+    display: block;
+    font-size: 20px;
     color: #363636;
     font-weight: 700;
     text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    max-width: 240px;
+    min-height: 330px;
+    padding: 18px;
+
+    p {
+      font-size: 15px;
+      line-height: 20px;
+    }
+
+    strong {
+      font-size: 18px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    max-width: 100%;
+    min-height: 320px;
+    padding: 18px 16px;
+    border-radius: 16px;
+
+    p {
+      font-size: 14px;
+      line-height: 20px;
+    }
+
+    strong {
+      font-size: 17px;
+    }
+  }
+
+  @media (max-width: 380px) {
+    min-height: 300px;
+    padding: 16px 14px;
+
+    p {
+      font-size: 13px;
+    }
+
+    strong {
+      font-size: 16px;
+    }
   }
 `;
 
 export const ImageContainer = styled.div`
   width: 100%;
-  height: 140px;
+  height: 160px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
   overflow: hidden;
+
+  @media (max-width: 768px) {
+    height: 140px;
+  }
+
+  @media (max-width: 600px) {
+    height: 130px;
+  }
+
+  @media (max-width: 380px) {
+    height: 120px;
+  }
 `;
 
 export const CardImage = styled.img`

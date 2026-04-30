@@ -15,10 +15,15 @@ export const Container = styled.div`
 
   @media (max-width: 768px) {
     padding: 18px;
+    border-radius: 14px;
 
     h3 {
       font-size: 20px;
     }
+  }
+
+  @media (max-width: 420px) {
+    padding: 14px;
   }
 `;
 
@@ -37,10 +42,10 @@ export const Item = styled.div`
   margin-bottom: 12px;
 
   background: #ffffff;
+  border: 1px solid #f1f5f9;
   border-radius: 12px;
 
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-
   transition: all 0.2s ease;
 
   &:hover {
@@ -49,10 +54,18 @@ export const Item = styled.div`
   }
 
   @media (max-width: 768px) {
-    grid-template-columns: 80px 1fr;
-    align-items: flex-start;
+    grid-template-columns: 76px 1fr;
+    gap: 12px;
+    padding: 14px;
+  }
+
+  @media (max-width: 420px) {
+    grid-template-columns: 68px 1fr;
+    gap: 10px;
+    padding: 12px;
   }
 `;
+
 export const Image = styled.img`
   width: 90px;
   height: 75px;
@@ -61,8 +74,14 @@ export const Image = styled.img`
   background: #f1f5f9;
 
   @media (max-width: 768px) {
-    width: 80px;
-    height: 70px;
+    width: 76px;
+    height: 68px;
+    border-radius: 10px;
+  }
+
+  @media (max-width: 420px) {
+    width: 68px;
+    height: 62px;
   }
 `;
 
@@ -70,12 +89,17 @@ export const Info = styled.div`
   display: flex;
   flex-direction: column;
   gap: 4px;
+  min-width: 0;
 `;
 
 export const Name = styled.span`
   font-size: 18px;
   font-weight: 700;
   color: #111827;
+
+  @media (max-width: 768px) {
+    font-size: 16px;
+  }
 `;
 
 export const Quantity = styled.span`
@@ -114,13 +138,24 @@ export const Actions = styled.div`
 
   @media (max-width: 768px) {
     grid-column: 1 / -1;
-    margin-top: 8px;
+    margin-top: 6px;
+    flex-wrap: wrap;
+
+    button {
+      height: 34px;
+      min-width: 34px;
+      padding: 0 10px;
+    }
   }
 `;
 
 export const RemoveButton = styled.button`
   background: #fee2e2 !important;
   color: #b91c1c !important;
+
+  @media (max-width: 420px) {
+    flex: 1;
+  }
 `;
 
 export const Price = styled.span`
@@ -128,10 +163,15 @@ export const Price = styled.span`
   font-weight: 800;
   color: #16a34a;
   text-align: right;
+  white-space: nowrap;
 
   @media (max-width: 768px) {
     grid-column: 1 / -1;
     text-align: left;
     font-size: 20px;
+  }
+
+  @media (max-width: 420px) {
+    font-size: 18px;
   }
 `;

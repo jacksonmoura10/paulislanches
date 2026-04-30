@@ -12,59 +12,111 @@ export const Container = styled.div`
 
   background-size: cover;
   background-position: center;
-
   padding-bottom: 50px;
 `;
 
 export const Banner = styled.div`
   width: 100%;
-  min-height: 320px;
+  min-height: 220px;
 
   display: flex;
   align-items: center;
   justify-content: flex-start;
 
-  padding: 0 90px;
+  padding: 0 80px;
   position: relative;
 
   background:
     linear-gradient(
       to right,
       rgba(2, 6, 23, 0.95) 0%,
-      rgba(2, 6, 23, 0.75) 40%,
-      rgba(2, 6, 23, 0.2) 100%
+      rgba(2, 6, 23, 0.78) 45%,
+      rgba(2, 6, 23, 0.3) 100%
     ),
     url(${bannerMenu});
 
   background-size: cover;
-  background-position: right center;
+  background-position: center right;
   background-repeat: no-repeat;
 
   border-bottom-left-radius: 24px;
   border-bottom-right-radius: 24px;
 
   div {
-    max-width: 520px;
+    max-width: 500px;
     z-index: 2;
   }
 
   h1 {
     margin: 0;
-    font-size: 50px;
-    line-height: 0.95;
+    font-size: clamp(32px, 5vw, 56px);
+    line-height: 1;
     color: #fff;
     font-weight: 800;
-    max-width: 500px;
-    text-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    max-width: 420px;
   }
 
   p {
-    margin-top: 18px;
-    margin-bottom: 0;
-    font-size: 18px;
-    line-height: 1.5;
+    margin-top: 14px;
+    font-size: clamp(14px, 2vw, 18px);
     color: #e2e8f0;
-    max-width: 420px;
+    max-width: 320px;
+  }
+
+  @media (max-width: 768px) {
+    min-height: 200px;
+    padding: 0 30px;
+
+    h1 {
+      font-size: 34px;
+      max-width: 300px;
+    }
+
+    p {
+      font-size: 15px;
+      max-width: 250px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    min-height: 180px;
+    padding: 20px;
+    align-items: center;
+
+    background:
+      linear-gradient(
+        to right,
+        rgba(2, 6, 23, 0.88) 0%,
+        rgba(2, 6, 23, 0.65) 55%,
+        rgba(2, 6, 23, 0.35) 100%
+      ),
+      url(${bannerMenu});
+
+    background-size: cover;
+    background-position: center;
+
+    h1 {
+      font-size: 30px;
+      max-width: 250px;
+    }
+
+    p {
+      margin-top: 10px;
+      font-size: 14px;
+      max-width: 220px;
+    }
+  }
+
+  @media (max-width: 380px) {
+    min-height: 170px;
+
+    h1 {
+      font-size: 26px;
+    }
+
+    p {
+      font-size: 13px;
+    }
   }
 `;
 
@@ -92,6 +144,12 @@ export const BackButton = styled.button`
     background: rgba(255, 255, 255, 0.14);
     transform: translateY(-2px);
   }
+
+  @media (max-width: 600px) {
+    margin: 20px 0 20px 20px;
+    padding: 9px 16px;
+    font-size: 13px;
+  }
 `;
 
 export const CategoryMenu = styled.div`
@@ -106,12 +164,21 @@ export const CategoryMenu = styled.div`
 
   margin: 0 auto 34px;
   padding: 0 20px;
+
+  @media (max-width: 600px) {
+    justify-content: center;
+    flex-wrap: wrap;
+    overflow-x: unset;
+    gap: 10px;
+    padding: 0 16px;
+  }
 `;
 
 export const CategoryButton = styled.button`
   border: none;
   border-radius: 999px;
-  padding: 10px 18px;
+  padding: 10px 16px;
+  white-space: nowrap;
 
   background: ${({ $isActiveCategory }) =>
     $isActiveCategory ? '#22d3ee' : 'rgba(255, 255, 255, 0.08)'};
@@ -130,6 +197,11 @@ export const CategoryButton = styled.button`
     background: ${({ $isActiveCategory }) =>
       $isActiveCategory ? '#22d3ee' : 'rgba(255, 255, 255, 0.14)'};
   }
+
+  @media (max-width: 600px) {
+    font-size: 12px;
+    padding: 8px 14px;
+  }
 `;
 
 export const ProductsContainer = styled.div`
@@ -142,13 +214,15 @@ export const ProductsContainer = styled.div`
   gap: 32px 64px;
 
   margin: 0 auto;
-  padding: 60 20px;
+  padding: 0 20px 60px;
 
   @media (max-width: 980px) {
     grid-template-columns: repeat(2, minmax(220px, 280px));
+    gap: 28px 24px;
   }
 
   @media (max-width: 640px) {
     grid-template-columns: minmax(220px, 320px);
+    gap: 24px;
   }
 `;

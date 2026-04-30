@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
   width: 100%;
   overflow-x: hidden;
-  padding: 0 40px 12px;
+  padding: 0 40px 30px;
 
   .carousel-items {
     padding-right: 20px;
@@ -29,6 +29,35 @@ export const Container = styled.div`
     top: 50%;
     transform: translateY(-50%);
   }
+
+  @media (max-width: 768px) {
+    padding: 0 20px 24px;
+
+    .carousel-items {
+      padding-right: 14px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    padding: 0 16px 20px;
+
+    .carousel-items {
+      padding-right: 10px;
+    }
+
+    .react-multi-carousel-arrow {
+      min-width: 34px;
+      min-height: 34px;
+    }
+
+    .react-multi-carousel-arrow--left {
+      left: 0;
+    }
+
+    .react-multi-carousel-arrow--right {
+      right: 0;
+    }
+  }
 `;
 
 export const Title = styled.h2`
@@ -49,5 +78,26 @@ export const Title = styled.h2`
     background-color: #22c55e;
     left: calc(50% - 28px);
     border-radius: 999px;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 28px;
+    margin: 36px 0 22px;
+  }
+
+  @media (max-width: 600px) {
+    font-size: 22px;
+    margin: 30px 0 18px;
+    padding-bottom: 10px;
+
+    &::after {
+      width: 44px;
+      height: 3px;
+      left: calc(50% - 22px);
+    }
+  }
+
+  @media (max-width: 380px) {
+    font-size: 20px;
   }
 `;

@@ -9,16 +9,8 @@ export const Container = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   background:
-    radial-gradient(
-      circle at top left,
-      rgba(34, 211, 238, 0.08),
-      transparent 22%
-    ),
-    radial-gradient(
-      circle at bottom right,
-      rgba(37, 99, 235, 0.08),
-      transparent 22%
-    ),
+    radial-gradient(circle at top left, rgba(34, 211, 238, 0.08), transparent 22%),
+    radial-gradient(circle at bottom right, rgba(37, 99, 235, 0.08), transparent 22%),
     linear-gradient(135deg, #0f172a 0%, #111827 45%, #0b1120 100%);
   overflow: hidden;
 
@@ -33,11 +25,13 @@ export const LeftContainer = styled.div`
   align-items: center;
   justify-content: center;
   overflow: hidden;
+
   background:
     linear-gradient(rgba(2, 6, 23, 0.75), rgba(2, 6, 23, 0.9)),
     url(${BackgroudFile});
   background-size: cover;
   background-position: center;
+
   border-right: 1px solid rgba(255, 255, 255, 0.04);
 
   &::before {
@@ -91,20 +85,14 @@ export const RightContainer = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+
+  min-height: 100vh;
   padding: 40px 24px;
   position: relative;
 
   background:
-    radial-gradient(
-      circle at top right,
-      rgba(34, 211, 238, 0.08),
-      transparent 30%
-    ),
-    radial-gradient(
-      circle at bottom left,
-      rgba(37, 99, 235, 0.08),
-      transparent 30%
-    ),
+    radial-gradient(circle at top right, rgba(34, 211, 238, 0.08), transparent 30%),
+    radial-gradient(circle at bottom left, rgba(37, 99, 235, 0.08), transparent 30%),
     linear-gradient(rgba(15, 23, 42, 0.92), rgba(11, 17, 32, 0.96)),
     url(${BackgroudFundo});
   background-size: cover;
@@ -139,8 +127,11 @@ export const RightContainer = styled.div`
   }
 
   @media (max-width: 900px) {
-    min-height: 100vh;
     padding: 24px 16px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 20px 12px;
   }
 `;
 
@@ -160,6 +151,11 @@ export const Title = styled.h2`
   @media (max-width: 900px) {
     font-size: 1.75rem;
   }
+
+  @media (max-width: 480px) {
+    font-size: 1.5rem;
+    line-height: 1.3;
+  }
 `;
 
 export const Subtitle = styled.p`
@@ -169,27 +165,42 @@ export const Subtitle = styled.p`
   color: #94a3b8;
   text-align: center;
   margin: 0 0 28px;
+
+  @media (max-width: 480px) {
+    font-size: 14px;
+    margin-bottom: 22px;
+  }
 `;
 
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
   gap: 20px;
+
   width: 100%;
   max-width: 420px;
   padding: 28px;
+
   border-radius: 20px;
   background: rgba(2, 6, 23, 0.72);
   border: 1px solid rgba(255, 255, 255, 0.06);
+
   box-shadow:
     0 20px 50px rgba(0, 0, 0, 0.35),
     inset 0 1px 0 rgba(255, 255, 255, 0.03);
+
   backdrop-filter: blur(14px);
 
   @media (max-width: 900px) {
-    max-width: 100%;
+    max-width: 390px;
     padding: 24px 20px;
     border-radius: 18px;
+  }
+
+  @media (max-width: 480px) {
+    max-width: 100%;
+    padding: 20px 16px;
+    gap: 16px;
   }
 `;
 
@@ -215,6 +226,7 @@ export const InputContainer = styled.div`
     background: rgba(15, 23, 42, 0.9);
     color: #f8fafc;
     font-size: 14px;
+
     transition:
       border-color 0.2s ease,
       box-shadow 0.2s ease,
@@ -243,6 +255,13 @@ export const InputContainer = styled.div`
     color: #ef4444;
     text-align: left;
   }
+
+  @media (max-width: 480px) {
+    input {
+      height: 52px;
+      font-size: 16px;
+    }
+  }
 `;
 
 export const Link = styled(ReactLink)`
@@ -250,6 +269,7 @@ export const Link = styled(ReactLink)`
   color: #22d3ee;
   font-weight: 600;
   margin-left: 4px;
+
   transition:
     color 0.2s ease,
     text-decoration 0.2s ease;

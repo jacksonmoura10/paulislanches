@@ -8,6 +8,7 @@ import Logo from '../../assets/logo.svg';
 import { Button } from '../../components/Button';
 import { useUser } from '../../hooks/userContext';
 import { api } from '../../services/api';
+
 import {
   Container,
   Form,
@@ -28,6 +29,7 @@ export function Login() {
       .string()
       .email('Digite um email válido')
       .required('O email é obrigatório'),
+
     password: yup
       .string()
       .min(6, 'A senha deve ter no mínimo 6 caracteres')
@@ -50,12 +52,26 @@ export function Login() {
         email: data.email,
         password: data.password,
       });
+      console.log('resposta login:', response.data);
 
       const { token, ...userData } = response.data;
-      localStorage.setItem('@paulislanches:token', token);
-      localStorage.setItem('@paulislanches:user', JSON.stringify(userData));
+      console.log(userData);
+      console.log(userData.admin);
 
-      putUserData({ token, ...userData });
+      // salva token
+      localStorage.setItem('@paulislanches:token', token);
+
+      // salva dados do usuário
+      localStorage.setItem(
+        '@paulislanches:user',
+        JSON.stringify(userData)
+      );
+
+      // salva no context
+      putUserData({
+        token,
+        ...userData,
+      });
 
       toast.update(toastId, {
         render: 'Seja Bem-Vindo(a)!',
@@ -64,10 +80,18 @@ export function Login() {
         autoClose: 2000,
       });
 
-      navigate('/');
+      // verifica se é admin
+      if (userData.admin) {
+        navigate('/admin');
+      } else {
+        navigate('/');
+      }
+
     } catch (error) {
       toast.update(toastId, {
-        render: error?.response?.data?.error || 'Erro ao fazer login.',
+        render:
+          error?.response?.data?.error ||
+          'Erro ao fazer login.',
         type: 'error',
         isLoading: false,
         autoClose: 4000,
@@ -85,26 +109,42 @@ export function Login() {
         <Title>
           Olá, seja bem-vindo ao <span>Paulislanches!</span>
         </Title>
-        <Subtitle>Acesse com login e senha.</Subtitle>
+
+        <Subtitle>
+          Acesse com login e senha.
+        </Subtitle>
 
         <Form onSubmit={handleSubmit(onSubmit)}>
           <InputContainer>
             <label>Email</label>
-            <input type="email" {...register('email')} />
+            <input
+              type="email"
+              placeholder="Digite seu email"
+              {...register('email')}
+            />
             <p>{errors?.email?.message}</p>
           </InputContainer>
 
           <InputContainer>
             <label>Senha</label>
-            <input type="password" {...register('password')} />
+            <input
+              type="password"
+              placeholder="Digite sua senha"
+              {...register('password')}
+            />
             <p>{errors?.password?.message}</p>
           </InputContainer>
 
-          <Button type="submit">Entrar</Button>
+          <Button type="submit">
+            Entrar
+          </Button>
         </Form>
 
         <p>
-          Não possui conta? <Link to="/cadastro">Clique aqui.</Link>
+          Não possui conta?
+          <Link to="/cadastro">
+            Clique aqui.
+          </Link>
         </p>
       </RightContainer>
     </Container>
