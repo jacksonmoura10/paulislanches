@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import Logo from '../../assets/logo.svg';
+
 import {
   BackButton,
   Banner,
@@ -8,6 +9,7 @@ import {
   Title,
   Wrapper,
 } from './styles';
+
 import CartItems from './components/CartItems';
 import CartResume from './components/CartResume';
 
@@ -17,15 +19,25 @@ export function Cart() {
   return (
     <Container>
       <Banner>
-        <img src={Logo} alt="logo paulislanches" />
+        <img
+          src={Logo}
+          alt="logo paulislanches"
+        />
       </Banner>
 
-      <BackButton type="button" onClick={() => navigate(-1)}>
-        ← Voltar
-      </BackButton>
-
       <Wrapper>
-        <Title>Checkout - Pedido</Title>
+        <BackButton
+          type="button"
+          onClick={() =>
+            navigate(-1)
+          }
+        >
+          ← Voltar
+        </BackButton>
+
+        <Title>
+          Checkout - Pedido
+        </Title>
 
         <Grid>
           <CartItems />

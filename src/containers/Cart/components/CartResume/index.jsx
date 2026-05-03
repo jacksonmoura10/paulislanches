@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useCart } from '../../../../hooks/CartContext';
+import { api } from '../../../../services/api';
 import { Button, Container, Field, Row } from './styles';
 
 export default function CartResume() {
@@ -18,13 +19,13 @@ export default function CartResume() {
   }, 0);
 
   function formatCurrency(value) {
-    return (value / 100).toLocaleString('pt-BR', {
+    return (Number(value) / 100).toLocaleString('pt-BR', {
       style: 'currency',
       currency: 'BRL',
     });
   }
 
-  function handleFinishOrder() {
+  async function handleFinishOrder() {
     if (cartProducts.length === 0) {
       alert('Seu carrinho está vazio.');
       return;
@@ -32,6 +33,19 @@ export default function CartResume() {
 
     if (!clientName || !address || !paymentMethod) {
       alert('Preencha nome, endereço e forma de pagamento.');
+      return;
+    }
+
+    try {
+      await api.post('/orders', {
+        products: cartProducts.map((product) => ({
+          id: product.id,
+          quantity: product.quantity,
+        })),
+      });
+    } catch (error) {
+      console.log(error);
+      alert('Erro ao registrar pedido.');
       return;
     }
 
@@ -58,7 +72,7 @@ ${productsMessage}
 Total: ${formatCurrency(total)}
 `;
 
-    const phone = '5531999999999'; // troque pelo número real
+    const phone = '5531999999999';
     const encodedMessage = encodeURIComponent(message);
 
     window.open(`https://wa.me/${phone}?text=${encodedMessage}`, '_blank');

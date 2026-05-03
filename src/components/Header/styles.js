@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import styled, { css } from 'styled-components';
 
 export const Container = styled.header`
   position: sticky;
@@ -16,6 +16,8 @@ export const Container = styled.header`
 `;
 
 export const Content = styled.div`
+  overflow: visible;
+
   width: 100%;
   max-width: 1400px;
   min-height: 70px;
@@ -115,6 +117,8 @@ export const HeaderLink = styled(NavLink)`
 `;
 
 export const Options = styled.div`
+  overflow: visible;
+
   display: flex;
   align-items: center;
   gap: 26px;
@@ -188,6 +192,7 @@ export const Logout = styled.button`
 
 export const LinkContainer = styled.div`
   position: relative;
+  overflow: visible;
 
   display: flex;
   align-items: center;
@@ -225,8 +230,8 @@ export const LinkContainer = styled.div`
 
 export const Badge = styled.span`
   position: absolute;
-  top: -8px;
-  right: -12px;
+  top: -10px;
+  right: -10px;
 
   min-width: 18px;
   height: 18px;
@@ -247,11 +252,6 @@ export const Badge = styled.span`
   box-shadow: 0 0 0 2px #020617;
 
   animation: pop 0.25s ease;
-
-  @media (max-width: 520px) {
-    top: -9px;
-    right: -9px;
-  }
 
   @keyframes pop {
     0% {

@@ -13,18 +13,24 @@ export default function CreateCategories() {
   async function handleCreateCategories(e) {
     e.preventDefault();
 
+    if (!name) {
+      return alert('Digite o nome da categoria');
+    }
+
     if (!file) {
       return alert('Selecione uma imagem da categoria');
     }
 
     try {
       const formData = new FormData();
+
       formData.append('name', name);
       formData.append('file', file);
 
       await api.post('/categories', formData);
 
       alert('Categoria criada com sucesso!');
+
       navigate('/admin/categories');
     } catch (error) {
       console.log(error);

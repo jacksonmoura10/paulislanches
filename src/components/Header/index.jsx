@@ -41,6 +41,10 @@ export function Header() {
             <HeaderLink to="/cardapio" $isActive={pathname === '/cardapio'}>
               Cardápio
             </HeaderLink>
+            <hr />
+            <HeaderLink to="/meus-pedidos" $isActive={pathname === '/meus-pedidos'}>
+              Meus Pedidos
+            </HeaderLink>
           </div>
         </Navigation>
 
@@ -56,12 +60,13 @@ export function Header() {
           </Profile>
 
           <LinkContainer>
-            <ShoppingCartIcon color="#fff" size={24} />
+            <div style={{ position: 'relative' }}>
+              <ShoppingCartIcon color="#fff" size={24} />
+              {totalItems > 0 && (
+                <Badge>{totalItems > 99 ? '99+' : totalItems}</Badge>
+              )}
+            </div>
             <HeaderLink to="/carrinho">Carrinho</HeaderLink>
-
-            {totalItems > 0 && (
-              <Badge>{totalItems > 99 ? '99+' : totalItems}</Badge>
-            )}
           </LinkContainer>
         </Options>
       </Content>

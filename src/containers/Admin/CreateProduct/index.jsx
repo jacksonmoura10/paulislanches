@@ -55,7 +55,7 @@ export default function CreateProduct() {
       const productFormData = new FormData();
 
       productFormData.append("name", name);
-      productFormData.append("price", price);
+      productFormData.append("price", Number(price) * 100);
       productFormData.append(
         "category_id",
         categoryId

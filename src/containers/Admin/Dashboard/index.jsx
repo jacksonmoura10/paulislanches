@@ -21,17 +21,9 @@ export default function Dashboard() {
     async function fetchData() {
       try {
         const [products, orders, categories] = await Promise.all([
-          fetch(`${BASE_URL}/products`, {
-            headers,
-          }).then((r) => r.json()),
-
-          fetch(`${BASE_URL}/orders`, {
-            headers,
-          }).then((r) => r.json()),
-
-          fetch(`${BASE_URL}/categories`, {
-            headers,
-          }).then((r) => r.json()),
+          fetch(`${BASE_URL}/products`, { headers }).then((r) => r.json()),
+          fetch(`${BASE_URL}/orders`, { headers }).then((r) => r.json()),
+          fetch(`${BASE_URL}/categories`, { headers }).then((r) => r.json()),
         ]);
 
         setCards([
@@ -41,7 +33,7 @@ export default function Dashboard() {
           },
           {
             title: 'Pedidos',
-            value: orders.length,
+            value: orders.filter((order) => order.status !== 'Entregue').length,
           },
           {
             title: 'Categorias',
@@ -49,12 +41,10 @@ export default function Dashboard() {
           },
           {
             title: 'Pedidos Finalizados',
-            value:
-              orders.filter((order) => order.status === 'done').length || 0,
+            value: orders.filter((order) => order.status === 'Entregue').length,
           },
         ]);
       } catch (error) {
-        console.log(error);
         console.error('Erro ao buscar dados:', error);
       }
     }
@@ -67,7 +57,6 @@ export default function Dashboard() {
       {cards.map((card) => (
         <Card key={card.title}>
           <CardTitle>{card.title}</CardTitle>
-
           <CardNumber>{card.value}</CardNumber>
         </Card>
       ))}

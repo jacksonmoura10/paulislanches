@@ -1,8 +1,16 @@
-import { Link, Outlet } from 'react-router-dom';
-
-import { Container, Content, Header, Main, Sidebar } from './styles';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
+import {
+  BackButton,
+  Container,
+  Content,
+  Header,
+  Main,
+  Sidebar,
+} from './styles';
 
 export default function Admin() {
+  const navigate = useNavigate();
+
   return (
     <Container>
       <Sidebar>
@@ -10,11 +18,12 @@ export default function Admin() {
 
         <nav>
           <Link to="/admin">Dashboard</Link>
-          <br />
           <Link to="/admin/products">Produtos</Link>
-          <br />
           <Link to="/admin/categories">Categorias</Link>
+          <Link to="/admin/orders">Pedidos</Link>
         </nav>
+
+        <BackButton onClick={() => navigate('/')}>← Voltar ao Site</BackButton>
       </Sidebar>
 
       <Main>

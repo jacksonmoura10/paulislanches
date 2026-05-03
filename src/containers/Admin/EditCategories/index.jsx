@@ -35,8 +35,13 @@ export default function EditCategories() {
   async function handleUpdateCategories(e) {
     e.preventDefault();
 
+    if (!name) {
+      return alert('Digite o nome da categoria');
+    }
+
     try {
       const formData = new FormData();
+
       formData.append('name', name);
 
       if (file) {
@@ -46,6 +51,7 @@ export default function EditCategories() {
       await api.put(`/categories/${id}`, formData);
 
       alert('Categoria atualizada com sucesso!');
+
       navigate('/admin/categories');
     } catch (error) {
       console.log(error);
