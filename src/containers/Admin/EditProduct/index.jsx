@@ -29,12 +29,11 @@ export default function EditProduct() {
         );
 
         if (product) {
-          setName(product.name || product.Name);
-          setPrice(product.price || product.Price);
-          setOffer(product.offer || product.Offer);
+          setName(product.name || product.Name || '');
+          setPrice(product.price || product.Price || '');
+          setOffer(product.offer || product.Offer || false);
         }
       } catch (error) {
-        console.log(error);
         alert("Erro ao carregar produto");
       }
     }
@@ -65,7 +64,6 @@ export default function EditProduct() {
 
       navigate("/admin/products");
     } catch (error) {
-      console.log(error);
       alert("Erro ao atualizar produto");
     }
   }

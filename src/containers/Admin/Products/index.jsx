@@ -30,7 +30,6 @@ export default function Products() {
       const response = await api.get('/products');
       setProducts(response.data);
     } catch (error) {
-      console.log(error);
       alert('Erro ao carregar produtos');
     }
   }
@@ -55,7 +54,6 @@ export default function Products() {
 
       alert('Produto deletado com sucesso!');
     } catch (error) {
-      console.log(error);
       alert('Erro ao deletar produto');
     }
   }

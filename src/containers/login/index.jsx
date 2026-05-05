@@ -52,22 +52,16 @@ export function Login() {
         email: data.email,
         password: data.password,
       });
-      console.log('resposta login:', response.data);
 
       const { token, ...userData } = response.data;
-      console.log(userData);
-      console.log(userData.admin);
 
-      // salva token
       localStorage.setItem('@paulislanches:token', token);
 
-      // salva dados do usuário
       localStorage.setItem(
         '@paulislanches:user',
         JSON.stringify(userData)
       );
 
-      // salva no context
       putUserData({
         token,
         ...userData,
@@ -80,7 +74,6 @@ export function Login() {
         autoClose: 2000,
       });
 
-      // verifica se é admin
       if (userData.admin) {
         navigate('/admin');
       } else {

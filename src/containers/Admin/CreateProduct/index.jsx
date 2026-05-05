@@ -17,18 +17,14 @@ export default function CreateProduct() {
   const [offer, setOffer] = useState(false);
   const [file, setFile] = useState(null);
   const [categories, setCategories] = useState([]);
-  const [categoryId, setCategoryId] =
-    useState("");
+  const [categoryId, setCategoryId] = useState("");
 
   useEffect(() => {
     async function loadCategories() {
       try {
-        const response = await api.get(
-          "/categories"
-        );
+        const response = await api.get("/categories");
         setCategories(response.data);
       } catch (error) {
-        console.log(error);
         alert("Erro ao carregar categorias");
       }
     }
@@ -40,15 +36,11 @@ export default function CreateProduct() {
     e.preventDefault();
 
     if (!file) {
-      return alert(
-        "Selecione uma imagem do produto"
-      );
+      return alert("Selecione uma imagem do produto");
     }
 
     if (!categoryId) {
-      return alert(
-        "Selecione uma categoria"
-      );
+      return alert("Selecione uma categoria");
     }
 
     try {
@@ -56,23 +48,16 @@ export default function CreateProduct() {
 
       productFormData.append("name", name);
       productFormData.append("price", Number(price) * 100);
-      productFormData.append(
-        "category_id",
-        categoryId
-      );
+      productFormData.append("category_id", categoryId);
       productFormData.append("offer", offer);
       productFormData.append("file", file);
 
-      await api.post(
-        "/products",
-        productFormData
-      );
+      await api.post("/products", productFormData);
 
       alert("Produto criado com sucesso!");
 
       navigate("/admin/products");
     } catch (error) {
-      console.log(error);
       alert("Erro ao criar produto");
     }
   }
@@ -86,9 +71,7 @@ export default function CreateProduct() {
           <label>Nome</label>
           <input
             value={name}
-            onChange={(e) =>
-              setName(e.target.value)
-            }
+            onChange={(e) => setName(e.target.value)}
           />
         </InputGroup>
 
@@ -97,9 +80,7 @@ export default function CreateProduct() {
           <input
             type="number"
             value={price}
-            onChange={(e) =>
-              setPrice(e.target.value)
-            }
+            onChange={(e) => setPrice(e.target.value)}
           />
         </InputGroup>
 
@@ -107,29 +88,16 @@ export default function CreateProduct() {
           <label>Categoria</label>
           <select
             value={categoryId}
-            onChange={(e) =>
-              setCategoryId(
-                e.target.value
-              )
-            }
+            onChange={(e) => setCategoryId(e.target.value)}
           >
-            <option value="">
-              Selecione uma categoria
-            </option>
+            <option value="">Selecione uma categoria</option>
 
             {categories.map((category) => (
               <option
-                key={
-                  category.id ||
-                  category.Id
-                }
-                value={
-                  category.id ||
-                  category.Id
-                }
+                key={category.id || category.Id}
+                value={category.id || category.Id}
               >
-                {category.name ||
-                  category.Name}
+                {category.name || category.Name}
               </option>
             ))}
           </select>
@@ -140,11 +108,7 @@ export default function CreateProduct() {
             <input
               type="checkbox"
               checked={offer}
-              onChange={(e) =>
-                setOffer(
-                  e.target.checked
-                )
-              }
+              onChange={(e) => setOffer(e.target.checked)}
             />
             Produto em oferta
           </label>
@@ -154,17 +118,11 @@ export default function CreateProduct() {
           <label>Imagem</label>
           <input
             type="file"
-            onChange={(e) =>
-              setFile(
-                e.target.files[0]
-              )
-            }
+            onChange={(e) => setFile(e.target.files[0])}
           />
         </InputGroup>
 
-        <Button type="submit">
-          Cadastrar Produto
-        </Button>
+        <Button type="submit">Cadastrar Produto</Button>
       </Form>
     </Container>
   );

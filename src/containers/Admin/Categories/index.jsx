@@ -30,7 +30,6 @@ export default function Categories() {
       const response = await api.get('/categories');
       setCategories(response.data);
     } catch (error) {
-      console.log(error);
       alert('Erro ao carregar categorias');
     }
   }
@@ -59,7 +58,6 @@ export default function Categories() {
 
       alert('Categoria deletada com sucesso!');
     } catch (error) {
-      console.log(error);
       alert('Erro ao deletar categoria');
     }
   }
@@ -72,11 +70,7 @@ export default function Categories() {
           <p>Total de categorias: {categories.length}</p>
         </HeaderContent>
 
-        <ActionButton
-          onClick={() =>
-            navigate('/admin/categories/new')
-          }
-        >
+        <ActionButton onClick={() => navigate('/admin/categories/new')}>
           + Nova Categoria
         </ActionButton>
       </HeaderActions>
@@ -94,13 +88,7 @@ export default function Categories() {
 
           <Tbody>
             {categories.map((category, index) => (
-              <Tr
-                key={
-                  category.id ||
-                  category.Id ||
-                  index
-                }
-              >
+              <Tr key={category.id || category.Id || index}>
                 <Td>
                   <CategoryImage
                     src={`http://localhost:3001/category-file/${category.path}`}
@@ -115,10 +103,7 @@ export default function Categories() {
                     <ActionButton
                       onClick={() =>
                         navigate(
-                          `/admin/categories/edit/${
-                            category.id ||
-                            category.Id
-                          }`,
+                          `/admin/categories/edit/${category.id || category.Id}`,
                         )
                       }
                     >
@@ -127,10 +112,7 @@ export default function Categories() {
 
                     <ActionButton
                       onClick={() =>
-                        handleDeleteCategory(
-                          category.id ||
-                            category.Id,
-                        )
+                        handleDeleteCategory(category.id || category.Id)
                       }
                     >
                       Deletar
@@ -146,13 +128,7 @@ export default function Categories() {
       {/* MOBILE */}
       <CategoryCardMobile>
         {categories.map((category, index) => (
-          <CategoryCard
-            key={
-              category.id ||
-              category.Id ||
-              index
-            }
-          >
+          <CategoryCard key={category.id || category.Id || index}>
             <CategoryImage
               src={`http://localhost:3001/category-file/${category.path}`}
               alt={category.name}
@@ -165,10 +141,7 @@ export default function Categories() {
                 <ActionButton
                   onClick={() =>
                     navigate(
-                      `/admin/categories/edit/${
-                        category.id ||
-                        category.Id
-                      }`,
+                      `/admin/categories/edit/${category.id || category.Id}`,
                     )
                   }
                 >
@@ -177,10 +150,7 @@ export default function Categories() {
 
                 <ActionButton
                   onClick={() =>
-                    handleDeleteCategory(
-                      category.id ||
-                        category.Id,
-                    )
+                    handleDeleteCategory(category.id || category.Id)
                   }
                 >
                   Deletar

@@ -23,7 +23,7 @@ export default function MyOrders() {
       const response = await api.get('/orders/my-orders');
       setOrders(response.data);
     } catch (error) {
-      console.log(error);
+      alert('Erro ao carregar pedidos');
     }
   }
 

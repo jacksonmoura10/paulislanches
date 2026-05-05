@@ -33,7 +33,6 @@ export default function CreateCategories() {
 
       navigate('/admin/categories');
     } catch (error) {
-      console.log(error);
       alert('Erro ao criar categoria');
     }
   }

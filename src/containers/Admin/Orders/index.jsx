@@ -20,7 +20,6 @@ export default function Orders() {
       const response = await api.get('/orders');
       setOrders(response.data.filter((order) => order.status !== 'Entregue'));
     } catch (error) {
-      console.log(error);
       alert('Erro ao carregar pedidos');
     }
   }
@@ -49,7 +48,6 @@ export default function Orders() {
 
       alert('Status atualizado com sucesso!');
     } catch (error) {
-      console.log(error);
       alert('Erro ao atualizar status');
     }
   }

@@ -22,7 +22,6 @@ export function OffersCarousel() {
           }));
 
         setOffers(onlyOffers);
-        console.log(onlyOffers);
       } catch (error) {
         console.error('Erro ao carregar produtos:', error);
       }

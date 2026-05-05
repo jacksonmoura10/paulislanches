@@ -44,7 +44,6 @@ export default function CartResume() {
         })),
       });
     } catch (error) {
-      console.log(error);
       alert('Erro ao registrar pedido.');
       return;
     }

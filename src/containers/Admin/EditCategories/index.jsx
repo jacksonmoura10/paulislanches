@@ -21,10 +21,9 @@ export default function EditCategories() {
         );
 
         if (category) {
-          setName(category.name || category.Name);
+          setName(category.name || category.Name || '');
         }
       } catch (error) {
-        console.log(error);
         alert('Erro ao carregar categoria');
       }
     }
@@ -54,7 +53,6 @@ export default function EditCategories() {
 
       navigate('/admin/categories');
     } catch (error) {
-      console.log(error);
       alert('Erro ao atualizar categoria');
     }
   }
