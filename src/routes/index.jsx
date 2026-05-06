@@ -8,17 +8,17 @@ import { Cart, Home, Login, Menu, Register } from '../containers';
 
 import Admin from '../containers/Admin';
 
-import Dashboard from '../containers/admin/Dashboard';
+import Dashboard from '../containers/Admin/Dashboard';
 
-import CreateProduct from '../containers/admin/CreateProduct';
-import EditProduct from '../containers/admin/EditProduct';
-import Products from '../containers/admin/Products';
+import CreateProduct from '../containers/Admin/CreateProduct';
+import EditProduct from '../containers/Admin/EditProduct';
+import Products from '../containers/Admin/Products';
 
-import Categories from '../containers/admin/Categories';
-import CreateCategories from '../containers/admin/CreateCategories';
-import EditCategories from '../containers/admin/EditCategories';
+import Categories from '../containers/Admin/Categories';
+import CreateCategories from '../containers/Admin/CreateCategories';
+import EditCategories from '../containers/Admin/EditCategories';
 
-import Orders from '../containers/admin/Orders';
+import Orders from '../containers/Admin/Orders';
 import MyOrders from '../containers/MyOrders';
 
 export const router = createBrowserRouter([
