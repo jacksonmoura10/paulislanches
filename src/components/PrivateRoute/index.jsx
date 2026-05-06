@@ -1,5 +1,5 @@
 import { Navigate } from 'react-router-dom';
-import { useUser } from '../../hooks/userContext';
+import { useUser } from '../../hooks/UserContext';
 
 export function PrivateRoute({ children, adminOnly = false }) {
   const { userInfo } = useUser();
