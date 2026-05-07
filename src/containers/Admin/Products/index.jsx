@@ -96,7 +96,7 @@ export default function Products() {
               <Tr key={product.id || product.Id || index}>
                 <Td>
                   <ProductImage
-                    src={`http://localhost:3001/product-file/${product.path}`}
+                    src={`import.meta.env.VITE_API_URL/product-file/${product.path}`}
                     alt={product.name}
                   />
                 </Td>
@@ -139,7 +139,7 @@ export default function Products() {
         {products.map((product, index) => (
           <ProductCard key={product.id || product.Id || index}>
             <ProductImage
-              src={`http://localhost:3001/product-file/${product.path}`}
+              src={`import.meta.env.VITE_API_URL/product-file/${product.path}`}
               alt={product.name}
             />
 

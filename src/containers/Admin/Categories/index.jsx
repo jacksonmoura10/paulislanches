@@ -91,7 +91,7 @@ export default function Categories() {
               <Tr key={category.id || category.Id || index}>
                 <Td>
                   <CategoryImage
-                    src={`http://localhost:3001/category-file/${category.path}`}
+                    src={`import.meta.env.VITE_API_URL/category-file/${category.path}`}
                     alt={category.name}
                   />
                 </Td>
@@ -130,7 +130,7 @@ export default function Categories() {
         {categories.map((category, index) => (
           <CategoryCard key={category.id || category.Id || index}>
             <CategoryImage
-              src={`http://localhost:3001/category-file/${category.path}`}
+              src={`import.meta.env.VITE_API_URL/category-file/${category.path}`}
               alt={category.name}
             />
 
