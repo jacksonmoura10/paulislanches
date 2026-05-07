@@ -1,7 +1,7 @@
 import { ShoppingCartIcon, UserCircleIcon } from '@phosphor-icons/react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useCart } from '../../hooks/CartContext';
-import { useUser } from '../../hooks/userContext';
+import { useUser } from '../../hooks/UserContext';
 import {
   Badge,
   Container,
