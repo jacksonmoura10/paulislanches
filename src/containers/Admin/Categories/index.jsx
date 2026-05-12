@@ -39,23 +39,13 @@ export default function Categories() {
   }, []);
 
   async function handleDeleteCategory(id) {
-    const confirmDelete = window.confirm(
-      'Deseja realmente deletar esta categoria?',
-    );
+    const confirmDelete = window.confirm('Deseja realmente deletar esta categoria?');
 
     if (!confirmDelete) return;
 
     try {
       await api.delete(`/categories/${id}`);
-
-      setCategories((prev) =>
-        prev.filter(
-          (category) =>
-            category.id !== id &&
-            category.Id !== id,
-        ),
-      );
-
+      setCategories((prev) => prev.filter((category) => category.id !== id && category.Id !== id));
       alert('Categoria deletada com sucesso!');
     } catch (error) {
       alert('Erro ao deletar categoria');
@@ -91,30 +81,17 @@ export default function Categories() {
               <Tr key={category.id || category.Id || index}>
                 <Td>
                   <CategoryImage
-                    src={`import.meta.env.VITE_API_URL/category-file/${category.path}`}
+                    src={category.url || category.path}
                     alt={category.name}
                   />
                 </Td>
-
                 <Td>{category.name}</Td>
-
                 <Td>
                   <ActionsContainer>
-                    <ActionButton
-                      onClick={() =>
-                        navigate(
-                          `/admin/categories/edit/${category.id || category.Id}`,
-                        )
-                      }
-                    >
+                    <ActionButton onClick={() => navigate(`/admin/categories/edit/${category.id || category.Id}`)}>
                       Editar
                     </ActionButton>
-
-                    <ActionButton
-                      onClick={() =>
-                        handleDeleteCategory(category.id || category.Id)
-                      }
-                    >
+                    <ActionButton onClick={() => handleDeleteCategory(category.id || category.Id)}>
                       Deletar
                     </ActionButton>
                   </ActionsContainer>
@@ -130,29 +107,16 @@ export default function Categories() {
         {categories.map((category, index) => (
           <CategoryCard key={category.id || category.Id || index}>
             <CategoryImage
-              src={`import.meta.env.VITE_API_URL/category-file/${category.path}`}
+              src={category.url || category.path}
               alt={category.name}
             />
-
             <CategoryCardInfo>
               <h3>{category.name}</h3>
-
               <ActionsContainer>
-                <ActionButton
-                  onClick={() =>
-                    navigate(
-                      `/admin/categories/edit/${category.id || category.Id}`,
-                    )
-                  }
-                >
+                <ActionButton onClick={() => navigate(`/admin/categories/edit/${category.id || category.Id}`)}>
                   Editar
                 </ActionButton>
-
-                <ActionButton
-                  onClick={() =>
-                    handleDeleteCategory(category.id || category.Id)
-                  }
-                >
+                <ActionButton onClick={() => handleDeleteCategory(category.id || category.Id)}>
                   Deletar
                 </ActionButton>
               </ActionsContainer>
