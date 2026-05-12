@@ -39,19 +39,13 @@ export default function Products() {
   }, []);
 
   async function handleDeleteProduct(id) {
-    const confirmDelete = window.confirm(
-      'Deseja realmente deletar este produto?',
-    );
+    const confirmDelete = window.confirm('Deseja realmente deletar este produto?');
 
     if (!confirmDelete) return;
 
     try {
       await api.delete(`/products/${id}`);
-
-      setProducts((prev) =>
-        prev.filter((product) => product.id !== id && product.Id !== id),
-      );
-
+      setProducts((prev) => prev.filter((product) => product.id !== id && product.Id !== id));
       alert('Produto deletado com sucesso!');
     } catch (error) {
       alert('Erro ao deletar produto');
@@ -96,34 +90,19 @@ export default function Products() {
               <Tr key={product.id || product.Id || index}>
                 <Td>
                   <ProductImage
-                    src={`import.meta.env.VITE_API_URL/product-file/${product.path}`}
+                    src={product.url || product.path}
                     alt={product.name}
                   />
                 </Td>
-
                 <Td>{product.name}</Td>
-
                 <Td>{formatPrice(product.price)}</Td>
-
                 <Td>{product.offer ? 'Sim' : 'Não'}</Td>
-
                 <Td>
                   <ActionsContainer>
-                    <ActionButton
-                      onClick={() =>
-                        navigate(
-                          `/admin/products/edit/${product.id || product.Id}`,
-                        )
-                      }
-                    >
+                    <ActionButton onClick={() => navigate(`/admin/products/edit/${product.id || product.Id}`)}>
                       Editar
                     </ActionButton>
-
-                    <ActionButton
-                      onClick={() =>
-                        handleDeleteProduct(product.id || product.Id)
-                      }
-                    >
+                    <ActionButton onClick={() => handleDeleteProduct(product.id || product.Id)}>
                       Deletar
                     </ActionButton>
                   </ActionsContainer>
@@ -139,31 +118,18 @@ export default function Products() {
         {products.map((product, index) => (
           <ProductCard key={product.id || product.Id || index}>
             <ProductImage
-              src={`import.meta.env.VITE_API_URL/product-file/${product.path}`}
+              src={product.url || product.path}
               alt={product.name}
             />
-
             <ProductCardInfo>
               <h3>{product.name}</h3>
-              <p>
-                <strong>Preço:</strong> {formatPrice(product.price)}
-              </p>
-              <p>
-                <strong>Oferta:</strong> {product.offer ? 'Sim' : 'Não'}
-              </p>
-
+              <p><strong>Preço:</strong> {formatPrice(product.price)}</p>
+              <p><strong>Oferta:</strong> {product.offer ? 'Sim' : 'Não'}</p>
               <ActionsContainer>
-                <ActionButton
-                  onClick={() =>
-                    navigate(`/admin/products/edit/${product.id || product.Id}`)
-                  }
-                >
+                <ActionButton onClick={() => navigate(`/admin/products/edit/${product.id || product.Id}`)}>
                   Editar
                 </ActionButton>
-
-                <ActionButton
-                  onClick={() => handleDeleteProduct(product.id || product.Id)}
-                >
+                <ActionButton onClick={() => handleDeleteProduct(product.id || product.Id)}>
                   Deletar
                 </ActionButton>
               </ActionsContainer>
