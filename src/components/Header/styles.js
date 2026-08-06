@@ -40,35 +40,6 @@ export const Content = styled.div`
   }
 `;
 
-export const Navigation = styled.nav`
-  display: flex;
-  align-items: center;
-  min-width: 0;
-
-  div {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-  }
-
-  hr {
-    width: 1px;
-    height: 22px;
-    border: none;
-    background: rgba(255, 255, 255, 0.12);
-  }
-
-  @media (max-width: 520px) {
-    div {
-      gap: 12px;
-    }
-
-    hr {
-      height: 18px;
-    }
-  }
-`;
-
 export const HeaderLink = styled(NavLink)`
   position: relative;
   text-decoration: none;
@@ -127,16 +98,12 @@ export const Options = styled.div`
   @media (max-width: 768px) {
     gap: 16px;
   }
-
-  @media (max-width: 520px) {
-    gap: 12px;
-  }
 `;
-
 export const Profile = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 2px;
   color: #f8fafc;
 
   svg {
@@ -147,14 +114,16 @@ export const Profile = styled.div`
   div {
     display: flex;
     flex-direction: column;
+    align-items: center;
     line-height: 1.05;
   }
 
   p {
     margin: 0;
-    font-size: 14px;
+    font-size: 13px;
     color: #cbd5e1;
     font-weight: 500;
+    text-align: center;
   }
 
   span {
@@ -162,13 +131,15 @@ export const Profile = styled.div`
     font-weight: 700;
   }
 
-  @media (max-width: 650px) {
-    div {
-      display: none;
-    }
+  .greeting {
+    color: #cbd5e1;
+    font-weight: 500;
+  }
+
+  @media (max-width: 768px) {
+    display: none;
   }
 `;
-
 export const Logout = styled.button`
   margin: 2px 0 0;
   padding: 0;
@@ -189,14 +160,12 @@ export const Logout = styled.button`
     text-decoration: underline;
   }
 `;
-
 export const LinkContainer = styled.div`
   position: relative;
   overflow: visible;
 
   display: flex;
   align-items: center;
-  gap: 8px;
 
   color: #f8fafc;
   font-size: 15px;
@@ -211,18 +180,22 @@ export const LinkContainer = styled.div`
     transform: translateY(-1px);
   }
 
+  a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
   svg {
     flex-shrink: 0;
   }
 
-  span {
+  .link-text {
     white-space: nowrap;
   }
 
-  @media (max-width: 520px) {
-    gap: 0;
-
-    span {
+  @media (max-width: 768px) {
+    .link-text {
       display: none;
     }
   }
@@ -262,5 +235,109 @@ export const Badge = styled.span`
       transform: scale(1);
       opacity: 1;
     }
+  }
+`;
+
+export const MenuButton = styled.button`
+  display: none;
+
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  padding: 4px;
+
+  @media (max-width: 768px) {
+    display: flex;
+  }
+`;
+
+export const MobileMenu = styled.div`
+  display: none;
+
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    padding: 16px;
+    background: rgba(2, 6, 23, 0.97);
+    backdrop-filter: blur(16px);
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+
+    animation: slideDown 0.2s ease;
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+`;
+export const MobileProfile = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #f8fafc;
+
+  svg {
+    flex-shrink: 0;
+    opacity: 0.95;
+  }
+
+  div {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+  }
+
+  p {
+    margin: 0;
+    font-size: 15px;
+    color: #cbd5e1;
+    font-weight: 500;
+  }
+
+  span {
+    color: #ffffff;
+    font-weight: 700;
+  }
+`;
+
+export const MobileMenuDivider = styled.hr`
+  width: 100%;
+  height: 1px;
+  border: none;
+  background: rgba(255, 255, 255, 0.08);
+`;
+
+export const Navigation = styled.nav`
+  display: flex;
+  align-items: center;
+  min-width: 0;
+
+  div {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  hr {
+    width: 1px;
+    height: 22px;
+    border: none;
+    background: rgba(255, 255, 255, 0.12);
+  }
+
+  @media (max-width: 768px) {
+    display: none;
   }
 `;
